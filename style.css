@@ -1,0 +1,282 @@
+/* 
+ * ACAPADEL - SOLAR HERITAGE HERO
+ * Premium Scrollytelling Experience
+ */
+
+:root {
+    /* Colors */
+    --bg-color: #010101;
+    /* Flat Premium Black */
+    --text-primary: #FFFFFF;
+    /* Premium White */
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --accent-blue: #0D6EFD;
+
+    /* Typography */
+    --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Z-Index Layers */
+    --z-canvas: 1;
+    --z-content: 10;
+    --z-loader: 100;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+body {
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+    /* No Gradient */
+    min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* 
+ * LOADER
+ */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: var(--z-loader);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-text {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.loader-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--text-primary);
+    transition: width 0.1s linear;
+}
+
+/* 
+ * SCROLL CONTROLLER 
+ */
+.scrolly-container {
+    position: relative;
+    height: 500vh;
+    /* Determines the speed/length of the animation */
+}
+
+.sticky-stage {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+ * CANVAS
+ */
+canvas#hero-canvas {
+    position: absolute;
+    /* Size handled by JS to simulate object-fit: contain */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: var(--z-canvas);
+    opacity: 0;
+    /* Fade in when ready */
+    transition: opacity 1s ease;
+    /* No mix-blend-mode needed for black on black */
+}
+
+/* 
+ * NARRATIVE OVERLAYS
+ */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-content);
+    pointer-events: none;
+    /* Let clicks pass through to canvas if needed, or re-enable on buttons */
+}
+
+.beat {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    text-align: center;
+    opacity: 0;
+    /* Controlled by JS */
+    will-change: opacity, transform;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Typography Styling */
+.hero-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+}
+
+.text-hollow {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-primary);
+    opacity: 0.8;
+}
+
+.hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.5;
+    color: var(--text-secondary);
+    max-width: 40ch;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Button */
+.cta-button {
+    pointer-events: auto;
+    /* Re-enable clicks */
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1.2rem 3rem;
+    background-color: var(--text-primary);
+    color: var(--bg-color);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border: 1px solid var(--text-primary);
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--text-primary);
+}
+
+/* Scroll Hint */
+.scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: var(--z-content);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.6;
+}
+
+.scroll-hint span {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background-color: var(--text-primary);
+    animation: scrollPulse 2s infinite;
+    transform-origin: top;
+}
+
+@keyframes scrollPulse {
+    0% {
+        transform: scaleY(0);
+    }
+
+    50% {
+        transform: scaleY(1);
+    }
+
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+}

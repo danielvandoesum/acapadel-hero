@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acapadel | Where it all started.</title>
+    <meta name="description" content="The origin story of Padel. Acapulco, 1969. Born in the heat, refined for performance.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:;base64,=">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <span class="loader-text">EST. 1969</span>
+            <div class="loader-bar">
+                <div class="loader-progress" id="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Scrollytelling Container -->
+    <main class="scrolly-container">
+        
+        <!-- Sticky Stage -->
+        <div class="sticky-stage">
+            
+            <!-- The Canvas Engine -->
+            <canvas id="hero-canvas"></canvas>
+
+            <!-- Narrative / UI Overlays -->
+            <div class="overlay-container">
+                
+                <!-- Beat A: The Hook -->
+                <section class="beat beat-a" id="beat-a">
+                    <h1 class="hero-title">1969. <span class="text-hollow">ACAPULCO.</span></h1>
+                    <p class="hero-sub">Where it all started. Before the neon. Before the hype.</p>
+                </section>
+
+                <!-- Beat B: The Heritage -->
+                <section class="beat beat-b" id="beat-b">
+                    <h2 class="hero-title">BORN IN <br>THE HEAT.</h2>
+                    <p class="hero-sub">A wall, a ball, and the sun. The soul of the game.</p>
+                </section>
+
+                <!-- Beat C: The Product -->
+                <section class="beat beat-c" id="beat-c">
+                    <h2 class="hero-title">MODERN <br>CLASSIC.</h2>
+                    <p class="hero-sub">Vintage aesthetics. Japanese Carbon performance.</p>
+                </section>
+
+                <!-- Beat D: CTA -->
+                <section class="beat beat-d" id="beat-d">
+                    <h2 class="hero-title brand-name">ACAPADEL.</h2>
+                    <a href="#" class="cta-button">Shop the Legend</a>
+                </section>
+
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-hint">
+                <span>SCROLL TO EXPLORE</span>
+                <div class="scroll-line"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
