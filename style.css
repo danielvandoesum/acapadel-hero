@@ -162,6 +162,10 @@ canvas#hero-canvas {
     filter: brightness(1.1) contrast(1.05);
 }
 
+canvas#hero-canvas.visible {
+    opacity: 1;
+}
+
 /*
  * NARRATIVE OVERLAYS
  */
