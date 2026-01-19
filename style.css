@@ -1,4 +1,4 @@
-/* 
+/*
  * ACAPADEL - SOLAR HERITAGE HERO
  * Premium Scrollytelling Experience
  */
@@ -43,7 +43,6 @@ body {
     font-family: var(--font-body);
     overflow-x: hidden;
     background-color: var(--bg-color);
-    /* No Gradient */
     min-height: 100vh;
 }
 
@@ -65,7 +64,7 @@ body {
     background: #555;
 }
 
-/* 
+/*
  * LOADER
  */
 .loader {
@@ -121,8 +120,8 @@ body {
     transition: width 0.1s linear;
 }
 
-/* 
- * SCROLL CONTROLLER 
+/*
+ * SCROLL CONTROLLER
  */
 .scrolly-container {
     position: relative;
@@ -139,9 +138,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* SPOTLIGHT EFFECT */
+    /* This creates a subtle glow behind the racket to separate it from the void */
+    background: radial-gradient(circle at center, #1c1c1c 0%, #010101 60%);
 }
 
-/* 
+/*
  * CANVAS
  */
 canvas#hero-canvas {
@@ -151,20 +154,15 @@ canvas#hero-canvas {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: var(--z-canvas);
-
-    /* DEBUG STYLES */
-    opacity: 1 !important;
-    /* Force visible */
-    border: 5px solid #00FF00;
-    /* Bright Green Border */
-    background-color: rgba(255, 0, 255, 0.2);
-    /* Slight Magenta tint to prove element existence */
-
+    opacity: 0;
+    /* Fade in when ready */
     transition: opacity 1s ease;
-    /* No mix-blend-mode needed for black on black */
+
+    /* Enhance image pop */
+    filter: brightness(1.1) contrast(1.05);
 }
 
-/* 
+/*
  * NARRATIVE OVERLAYS
  */
 .overlay-container {
