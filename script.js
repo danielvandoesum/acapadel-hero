@@ -46,7 +46,10 @@ class AssetLoader {
             const img = new Image();
             img.src = this.pathGenerator(i);
             img.onload = () => this.handleLoad();
-            img.onerror = () => this.handleLoad(); // Continue even on error to avoid softlock
+            img.onerror = (e) => {
+                console.error(`Failed to load image: ${img.src}`);
+                this.handleLoad();
+            };
             this.images.push(img);
         }
     }
