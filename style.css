@@ -151,8 +151,15 @@ canvas#hero-canvas {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: var(--z-canvas);
-    opacity: 0;
-    /* Fade in when ready */
+
+    /* DEBUG STYLES */
+    opacity: 1 !important;
+    /* Force visible */
+    border: 5px solid #00FF00;
+    /* Bright Green Border */
+    background-color: rgba(255, 0, 255, 0.2);
+    /* Slight Magenta tint to prove element existence */
+
     transition: opacity 1s ease;
     /* No mix-blend-mode needed for black on black */
 }

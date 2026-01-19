@@ -107,6 +107,9 @@ class Renderer {
 
     draw(image) {
         if (!image) return;
+        // DEBUG LOG (Throttled)
+        if (Math.random() < 0.01) console.log('Drawing frame', image.src);
+
         this.currentImage = image;
 
         const ctx = this.ctx;
